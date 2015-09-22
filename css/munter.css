@@ -1,0 +1,61 @@
+footer {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1em;
+
+  font-family: sans-serif;
+
+  /*background: rgba(0, 0, 0, 0.3);*/
+
+  color: #ccc;
+}
+
+footer a {
+  color: #eef;
+  text-decoration: none;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+footer a:hover {
+  font-size: 200%;
+}
+
+.reveal .backgrounds .slide-background:before {
+  content: '';
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  width: 80vw;
+  height: 200vh;
+
+  transform: rotate(10deg);
+  transform-origin: top right;
+
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/*.reveal .backgrounds .slide-background:after {
+  content: '';
+  position: absolute;
+
+  top: calc(50% - 1em);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+
+  padding: 20%;
+
+  background: rgba(0, 0, 0, 0.1);
+}*/
+
+.reveal section img {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}

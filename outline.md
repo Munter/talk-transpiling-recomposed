@@ -62,7 +62,7 @@ I think we are caught in a local optimum and that we need new ideas to improve.
 - Babel / TypeScript / CoffeeScript
 - Jade / Markdown
 
-Simple tools. Unix 1-to-1 comman line. They enable us you use the abstraction we like, give us access to powerful new features immediately
+Simple tools. Unix 1-to-1 command line. They enable us you use the abstraction we like, give us access to powerful new features immediately
 
 # The Problem
 
@@ -76,7 +76,7 @@ Figure:
   - So we build a web server that looks for files first in the build artifact folder, then in the source folder
   - Running the transpiling manually gets tedious, so we set up a file watcher to trigger transpiling on each source file increment
   - And you probably also need a task runner to orchestrate all of this
-  - When you set up a build system, this has to also know where to find the build artifacts, or if not, it has to redo compilation in its own temporary directory
+  - When you set up a production build system, this has to also know where to find the build artifacts, or if not, it has to redo compilation in its own temporary directory
 
 Does that look about right?
 
@@ -90,13 +90,51 @@ Lets take a step back and look at this again. Does it look simple? (No)
 
 So what we do is wrap a bow around it to make it easy: "Yo webapp"
 
-But easy is not simple. And when a newcomer tries to learn frontend development and something goes wrong with this setup, they hit a wall of massive complexity.
+But easy is not the same as simple. And when a newcomer tries to learn frontend development and something goes wrong with this setup, they hit a wall of massive complexity.
 
 They are not able to buy into the added benefits of transpilers without also having to buy and entire ecosystem filled with complexity.
 
-I often hear senior developers counter my view that this should be a problem, with: "My setup is complex / legacy / special, so we need the complexity"... "We NEED this complexity"... "NEED"?
+I often hear senior developers dismiss that this should be a problem. "My setup is complex / legacy / customized / special, so we need the complexity"... "We NEED this complexity"... "NEED"?
 
-I believe the need for complexity is a fallacy. I believe that nobody needs complexty. What you need is ability. And with the current set of tools you could only get this ability by also accepting the complexity. But what if we could figure out a way to get the ability without the complexity?
+I believe the need for complexity is a fallacy. I believe that nobody needs complexity. What you need is ability. And with the current set of tools you could only get this ability by also accepting the complexity. But what if we could figure out a way to get the ability without the complexity?
+
+# Requirements
+
+I think that most of this complexity comes from wrong abstractions. And I believe that the wrong abstraction for the job of transpiling in a simpler way, is the task runner. Not Grunt, Gulp, Broccoli or any other task runner specifically. Any task runner. All task runners. From Make and up.
+
+I believe that the task runners lack of knowledge of user intention is causing configuration to explode and too much work to be done. And the lack of interoperability with other tools is causing ecosystem lock-in. How many combinations of grunt-sass, gulp-sass or broccoli-sass do we have to see before we realize we are stuck in a local optimum and need to rethink our approach?
+
+Now, task runners are not all bad. In fact I think task runners are one of the primary reasons we have seen an explosion in the ecosystem of tooling. They have provided a stable forum for all the tools to come together. But now that we have all of these high quality tools I think it's time to step back, rethink and recompose.
+
+These are the features I think transpiler tooling should offer:
+- Handle all types of transpilers, not just a single one
+- Have a good API that other tools easily can integrate with
+- Be a stand alone tool that imposes no ecosystem on the user
+- Compile on demand
+- Keep urls valid
+- Sourcemaps
+- Autoprefixing
+- Caching
+- Little to no configuration
+- Simple mental model
+
+That's a long list, but let's see what we can do.
+
+# Experiments
+
+With the Assetgraph project I've actually been on a parallel track to task runner based build systems all along, and have gotten by wihtout them for quite a long time.
+
+At one point I used in-browser transpilers with less, or requirejs plugins. These obviously tick very few of the above boxes, since they require a browser environment, loose all build artifacts on page reloads and don't intergrate well with command line tools. But they did give me an idea on the next iteration.
+
+Up until very recently I have been using Express middlewares for my transpiling needs. They have better cahing than the in-browser transpiler, but generally suffer from the same lack of access to build artifacts for tools that don't understand http.
+
+But what they have in common is a reversal of the control flow. The browser runtime expresses a need for an asset and initiates a request for it. The transpiler tool can intercept this request and do the needed transpiling work.
+
+This feature has some interesting implications.
+- Assets are compiled just-in-time and on demand. No extra work is ever done to assets that are left untouched by your current workflow.
+- Configuration reduces down to nothing, since there is no longer a need for instructions on where to read files or where to put them. This knowledge is implicit in a request
+
+It's still not stand alone, and does impose the ecosystem requirement of web server with installed middlewares.
 
 
 

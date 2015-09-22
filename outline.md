@@ -134,7 +134,31 @@ This feature has some interesting implications.
 - Assets are compiled just-in-time and on demand. No extra work is ever done to assets that are left untouched by your current workflow.
 - Configuration reduces down to nothing, since there is no longer a need for instructions on where to read files or where to put them. This knowledge is implicit in a request
 
-It's still not stand alone, and does impose the ecosystem requirement of web server with installed middlewares.
+It's still not stand alone though. It does impose the ecosystem requirement of web server with installed middlewares. But I think there is something about this concept that has merit.
+
+The biggest problem left is that integration with most other tools requires build artifact presence on disk. But we don't want the build artifact to clog up our source folder, and we don't want to look for it anywhere else because that would add complexity as well.
+
+So how do we deal with the fact that we want our build artifacts to be transient? Available when we need them, but not require us to configure tools to avoid them when we don't?
+
+If I undeerstand the Broccoli task runner correctly, this is actually what it allows you to do. You can create a full on-disk copy or your entire source folder, but with your assets transpiled. Jo-liss has spent a great deal of effort at making Broccoli really fast at this. But it's not a stand alone tool that is easy to wield, and it does require some research and configuration to make it work.
+
+I'd like to see if I can create something that's even simpler to understand.
+
+# The idea
+
+So what if we could take this transient nature of build artifacts and extend the concept to a complete source folder?
+
+It turns out that we can. Node has had Fuse bindings since 2012, and we even saw a demo using them last year on this very spot.
+
+So this is the idea:
+- A fuse mounted directory containing a proxy of your source folder
+- Any asset that needs transpiling is transpiled on deman when read
+- Retains all the benefits from express middlewares
+- Adds a file system API to let other tools intergrate
+
+# Demo time
+
+So this is what I built:
 
 
 

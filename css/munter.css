@@ -59,3 +59,11 @@ footer a:hover {
   border: 0;
   box-shadow: none;
 }
+
+.reveal section.dark * {
+  color: white;
+}
+
+.reveal section.text-shadow * {
+  text-shadow: 0 0 10px rgba(0,0,0,1);
+}

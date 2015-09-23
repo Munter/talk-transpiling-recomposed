@@ -122,7 +122,7 @@ That's a long list, but let's see what we can do.
 
 # Experiments
 
-With the Assetgraph project I've actually been on a parallel track to task runner based build systems all along, and have gotten by wihtout them for quite a long time.
+With the Assetgraph project I've actually been on a parallel track to task runner based build systems all along, and have gotten by without them for quite a long time.
 
 At one point I used in-browser transpilers with less, or requirejs plugins. These obviously tick very few of the above boxes, since they require a browser environment, loose all build artifacts on page reloads and don't intergrate well with command line tools. But they did give me an idea on the next iteration.
 
@@ -160,5 +160,16 @@ So this is the idea:
 
 So this is what I built:
 
+Fusile: A web asset transpiling file system proxy
+
+# Perspective
+
+Transpiles anything (with an Accord integration)
+
+All transpiler plugins in all tools collapsed down to a single step in the pipeline before anything else.
+
+Incremental buy-in. You can use this wihtout anything else
+
+Integrates with all other tools. You can go all-out Grunt or Gulp, or just have an Apache server.
 
 

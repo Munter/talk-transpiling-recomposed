@@ -5,3 +5,21 @@
 .reveal .slide-background.front.present {
   opacity: 0.8;
 }
+
+.reveal .complexity-stamp:after {
+  content: '';
+  background: url(../images/Yeoman.svg) no-repeat;
+  background-size: contain;
+  position: absolute;
+  margin: 0;
+
+  max-width: 1920px;
+  max-height: 1080px;
+
+  height: 800px;
+  width: 735px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(10deg);
+}

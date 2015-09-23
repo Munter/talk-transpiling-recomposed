@@ -38,8 +38,8 @@
 
 			#current-slide {
 				position: absolute;
-				width: 65%;
-				height: 100%;
+				width: 48%;
+				height: 48%;
 				top: 0;
 				left: 0;
 				padding-right: 0;
@@ -47,18 +47,19 @@
 
 			#upcoming-slide {
 				position: absolute;
-				width: 35%;
-				height: 40%;
+				width: 48%;
+				height: 48%;
 				right: 0;
 				top: 0;
 			}
 
 			#speaker-controls {
+        display: flex;
 				position: absolute;
-				top: 40%;
+				top: 50%;
 				right: 0;
-				width: 35%;
-				height: 60%;
+        left: 0;
+        bottom: 0;
 				overflow: auto;
 
 				font-size: 18px;
@@ -79,6 +80,8 @@
 				}
 
 				.speaker-controls-time {
+          display: flex;
+          flex-direction: column;
 					border-bottom: 1px solid rgba( 200, 200, 200, 0.5 );
 					margin-bottom: 10px;
 					padding: 10px 16px;
@@ -103,11 +106,13 @@
 				}
 
 				.speaker-controls-time .timer {
-					float: left;
+					/*float: left;*/
 				}
 
 				.speaker-controls-time .clock {
-					float: right;
+					/*float: right;*/
+          display: none;
+          white-space: nowrap;
 					text-align: right;
 				}
 
@@ -122,7 +127,7 @@
 				.speaker-controls-notes .value {
 					margin-top: 5px;
 					line-height: 1.4;
-					font-size: 1.2em;
+					font-size: 1em;
 				}
 
 			.clear {

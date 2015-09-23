@@ -32,10 +32,10 @@ footer a:hover {
   top: 0;
   right: 0;
   width: 80vw;
-  height: 200vh;
+  height: 100vh;
 
-  transform: rotate(10deg);
   transform-origin: top right;
+  transform: skewX(-10deg);
 
   background: rgba(0, 0, 0, 0.2);
 }
@@ -64,6 +64,18 @@ footer a:hover {
   color: white;
 }
 
-.reveal section.text-shadow * {
+.reveal section[data-background^="images"] *,
+.reveal section.light-font {
+  color: #eee;
   text-shadow: 0 0 10px rgba(0,0,0,1);
+}
+
+.speaker-controls-notes {
+  margin: 0;
+  padding: 0;
+}
+
+.speaker-controle-notes ul {
+  margin: 0;
+  padding: 0;
 }

@@ -7,7 +7,8 @@
   "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
-    "start": "grunt serve"
+    "start": "grunt serve",
+    "dot": "dot -Tsvg -O dot/*.dot"
   },
   "author": {
     "name": "Hakim El Hattab",
@@ -40,6 +41,6 @@
     "grunt": "~0.4.0",
     "node-sass": "~0.9.3"
   },
-  
+
   "license": "MIT"
 }

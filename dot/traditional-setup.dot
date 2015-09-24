@@ -1,0 +1,39 @@
+digraph fusile{
+    stylesheet="traditional-setup.css";
+
+    subgraph "clusterComponent" {
+        label = "Traditional setup";
+
+        "Source Dir"[shape=folder];
+        "Artifact Dir"[shape=folder];
+        #"Task Runner"[shape=doublecircle];
+        "Transpiler Task"[shape=diamond];
+        "Web Server"[shape=doublecirle];
+        "Browser"[shape=note];
+        "File Watcher"[shape=doublecircle];
+
+        "Production Builder";
+        "Builder Plugin"[shape=diamond];
+        "Production Artifacts"[shape=folder];
+
+        "Linter";
+        "Linter Plugin"[shape=diamond];
+
+        "Test Framework"
+        "Test Plugin"[shape=diamond];
+    }
+
+    #"Task Runner" -> "Web Server"[label="run"];
+    #"Task Runner" -> "File Watcher"[label="run"];
+    #"Task Runner" -> "Transpiler Task"[label="run"];
+
+    "Transpiler Task" -> "Source Dir"[label="read"];
+    "Transpiler Task" -> "Artifact Dir"[label="write"];
+    "Web Server" -> "Artifact Dir"[label="read attempt"];
+    "Web Server" -> "Source Dir"[label="read fallback"];
+    "Browser" -> "Web Server"[label="request"];
+    "File Watcher" -> "Source Dir"[label="watch"];
+    "File Watcher" -> "Browser"[label="trigger update"];
+
+
+}

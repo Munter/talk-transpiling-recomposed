@@ -1,0 +1,54 @@
+digraph fusile{
+    graph[rankdir=LR];
+    splines="ortho";
+    stylesheet="fusile.css";
+
+    "fs.read"[shape=plaintext];
+    "data"[shape=plaintext];
+
+    subgraph "clusterComponent" {
+        label = "Fusile";
+
+        "transpiler?"[shape=diamond];
+        "cached?"[shape=diamond];
+        "CSS?"[shape=diamond];
+        "Transpiler";
+        "Cache";
+        "Source";
+        "Autoprefixer";
+        "Buffer";
+
+        {
+            rank = same;
+            "transpiler?";
+            "cached?";
+            "Transpiler";
+        }
+
+        {
+            rank = same;
+            "Cache";
+            "Source";
+        }
+
+        {
+            rank = same;
+            "Autoprefixer";
+            "CSS?";
+        }
+    }
+
+    "transpiler?" -> "Source"[label="No"];
+    "transpiler?" -> "cached?"[label="Yes"];
+    "cached?" -> "Transpiler"[label="No"];
+    "cached?" -> "Cache"[label="Yes"];
+    "Transpiler" -> "Cache";
+    "Cache" -> "Source";
+    "Source" -> "CSS?";
+    "CSS?" -> "Buffer"[label="No"];
+    "CSS?" -> "Autoprefixer"[label="Yes"];
+    "Autoprefixer" -> "Buffer";
+    "Buffer" -> "data";
+    "fs.read" -> "transpiler?";
+
+}

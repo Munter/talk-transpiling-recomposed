@@ -70,19 +70,20 @@
         </section>
 
         <section data-background="#BE9382" class="dark">
-          <h1 style="font-size: 400%">Transpilers</h1>
-          <h2 class="fragment">Source → Source</h2>
-          <h2 class="fragment">Gibberish → Source</h2>
-          <h2 class="fragment">Source → Inconvenient Source</h2>
+          <h1 style="font-size: 600%">Transpilers</h1>
+          <h2 style="font-size: 300%">Source → Source</h2>
+          <p class="fragment">Sass, Less, Stylus, Autoprefixer, Myth, Babel, Jsx, Coffeescript, TypeScript, Markdown, Jade, Haml</p>
+          <!-- <h2 class="fragment">Gibberish → Source</h2>
+          <h2 class="fragment">Source → Inconvenient Source</h2> -->
 
           <aside class="notes">
             <ul>
-              <li>Note that I collapse css, js, html transpilers into one abstract</li>
               <li>Simple tools.</li>
               <li>Unix 1-to-1 command line.</li>
               <li>Enables abstractions we like</li>
               <li>Give access to powerful new features immediately</li>
               <li>These are awesome. But there is still a problem</li>
+              <li>Note that I collapse css, js, html transpilers into one abstract</li>
             </ul>
           </aside>
         </section>
@@ -105,8 +106,8 @@
           </aside>
         </section>
 
-        <section>
-          <h1>Transpiling: Source directory</h1>
+        <section class="large-p">
+          <h1 style="font-size: 300%">Transpiling: Source directory</h1>
 
           <p><code>app/main.scss → app/main.css</code></p>
           <p class="fragment"><code>cat *.css > .gitignore</code></p>
@@ -124,8 +125,8 @@
           </aside>
         </section>
 
-        <section>
-          <h1>Transpiling: Temp Directory</h1>
+        <section class="large-p">
+          <h1 style="font-size: 300%">Transpiling: Temp Directory</h1>
 
           <p><code>app/main.scss → artifacts/main.css</code></p>
           <p><code>cat artifacts > .gitignore</code></p>
@@ -148,8 +149,8 @@
           </aside>
         </section>
 
-        <section>
-          <h1>Transpiling: Build trigger</h1>
+        <section class="large-p">
+          <h1 style="font-size: 300%">Transpiling: Build trigger</h1>
 
           <p class="fragment"><code>WATCH app/**/*.css</code></p>
           <p class="fragment"><code>TRIGGER TRANSPILE app/main.scss → artifacts/main.css</code></p>
@@ -167,8 +168,8 @@
           </aside>
         </section>
 
-        <section>
-          <h1>Transpiling: Integrations</h1>
+        <section class="large-p">
+          <h1 style="font-size: 300%">Transpiling: Integrations</h1>
 
           <p class="fragment">Task runner</p>
           <p class="fragment">Production bundler</p>
@@ -180,21 +181,9 @@
               <li>CSS is only consumed by few tools. Your browser and your build system mainly. Javascript is consumed by many more</li>
               <li>So now you need to find transpiler plugins for all of these tools</li>
               <li>And for each of those integrations you need a plugin for each transpiler, so start multiplying...</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section>
-          <h1>Transpiling: A Kakaphony</h1>
-
-          TODO: flow-chart-ish of all moving parts
-
-          <aside class="notes">
-            <ul>
               <li>So let's take a step back and evaluate</li>
               <li>Does this look simple to you?</li>
-              <li>The word I would use is complex</li>
-              <li>Not to worry though, modern tooling has you covered!</li>
+              <li>The word I would use is complex (SLIDE)</li>
             </ul>
           </aside>
         </section>
@@ -206,10 +195,11 @@
 
           <aside class="notes">
             <ul>
-              <li>We just take all of this complexity... And wrap a nice bow around it</li>
-              <li>Yo! (FRAGMENT)</li>
-              <li>Easy, But not simple</li>
-              <li>So imagine you are a new developer who just wants to use Babel, but you get some error in this system and need to resolve it...</li>
+              <li>Not to worry though, modern tooling has you covered!</li>
+              <li>We just take all of this complexity... And scaffold it (FRAGMENT)</li>
+              <li>Problem not solved. Problem hidden away</li>
+              <li>Easy vs. simple</li>
+              <li>But when something eventually goes wrong, this is what a new developer sees</li>
             </ul>
           </aside>
         </section>
@@ -245,10 +235,52 @@
           </aside>
         </section>
 
+        <section data-background="/images/front.jpg">
+          <h1 style="font-size: 500%">Recomposing</h1>
+        </section>
 
-        <section data-background="#353432">
-          <img src="images/mntr-white.svg" style="height: 800px">
-          <p>http://mntr.dk</p>
+        <section data-background="#f2f2f2" class="dark">
+          <h1>Want</h1>
+          <img src="images/todo-specs.png" class="stretch">
+        </section>
+
+        <section data-background="#f2f2f2" class="dark">
+          <h1>Task runner</h1>
+          <img src="images/todo-task-runner.png" class="stretch">
+        </section>
+
+        <section data-background="#6D7B98" class="dark">
+          <h1 style="font-size: 400%">Control flow</h1>
+
+          <img src="images/u-turn.svg" class="stretch">
+        </section>
+
+        <section data-background="#f2f2f2" class="dark">
+          <h1>Middleware</h1>
+          <img src="images/todo-middleware.png" class="stretch">
+        </section>
+
+        <section data-background="#FF9A56">
+          <img src="images/mntr-white.svg" class="stretch">
+        </section>
+
+        <section data-background="#f2f2f2" class="dark">
+          <h1>Fusile</h1>
+          <img src="images/todo-fusile.png" class="stretch">
+        </section>
+
+
+        <section>
+          <h1>Fusile</h1>
+          <br>
+          <h2><a href="https:/github.com/Munter/fusile">github.com/Munter/fusile</a></h2>
+          <br>
+          <pre><code>$ npm install fusile -g
+$ fusile &lt;sourcedir&gt; &lt;targetdir&gt;</code></pre>
+          <br>
+          <h2>License: MIT</h2>
+          <br>
+          <h2>Status: Development ready</h2>
         </section>
 
 
@@ -280,6 +312,12 @@
             <a href="https://en.wikipedia.org/wiki/Methamphetamine">Wikipedia</a>
             -
             <a href="https://en.wikipedia.org/wiki/File:Crystal_Meth.jpg">Crystal Meth</a>
+          </p>
+          <p>
+            <a href="http://todomvc.com/">TodoMVC</a>
+          </p>
+          <p>
+            <a href="https://commons.wikimedia.org/wiki/File:Dopravn%C3%A1_zna%C4%8Dka_C5.svg">Dopravná značka C5</a>
           </p>
           <p>
             <a href="http://www.stillasleep.com/WALLPAPERS/CAT/Scenery/2/S4w-EarthFromAbove180-UnitedStates-LosAngeles-InterchangeBetweenPasadenaAndSantaMonicaFreeways.jpg">Interchange Between Pasadena And Santa Monica Freeways</a>

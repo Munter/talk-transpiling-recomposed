@@ -44,9 +44,9 @@
 			<div class="slides">
 				<section data-background="images/front.jpg" class="front">
 					<h1 style="font-size: 500%">Transpiling</h1>
-          <h1 style="font-size: 600%">Re<span style="color: #789;">com</span>posed</h1>
+          <h1 style="font-size: 600%">Recomposed</h1>
 					<p>
-						<small>By <a href="https://mntr.dk">Peter Müller</a> / <a href="https://twitter.com/_munter_">@_munter_</a></small>
+						By <a href="https://mntr.dk">Peter Müller</a> / <a href="https://twitter.com/_munter_">@_munter_</a>
 					</p>
 				</section>
 
@@ -110,7 +110,7 @@
           <h1 style="font-size: 300%">Transpiling: Source directory</h1>
 
           <p><code>app/main.scss → app/main.css</code></p>
-          <p class="fragment"><code>cat *.css > .gitignore</code></p>
+          <p class="fragment"><code>echo "*.css" >> .gitignore</code></p>
           <p class="fragment"><code>app/vendor/bootstrap.css</code> ❌</p>
 
           <aside class="notes">
@@ -129,7 +129,7 @@
           <h1 style="font-size: 300%">Transpiling: Temp Directory</h1>
 
           <p><code>app/main.scss → artifacts/main.css</code></p>
-          <p><code>cat artifacts > .gitignore</code></p>
+          <p><code>echo "artifacts" >> .gitignore</code></p>
           <p class="fragment">
             <code>
               HTTP GET artifacts/main.css &nbsp; <span style="color: lime">✔</span> 200<br>
@@ -300,7 +300,7 @@ $ fusile &lt;sourcedir&gt; &lt;targetdir&gt;</code></pre>
 
           <h3>Slides</h3>
 
-          <p><a href="https://github.com/Munter/talk-transpiling-recomposed">github.com/Munter/talk-transpiling-recomposed</a></p>
+          <p><a href="https://mntr.dk/talk-transpiling-recomposed">mntr.dk/talk-transpiling-recomposed</a></p>
 
           <p>&nbsp;</p>
 
